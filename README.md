@@ -18,7 +18,7 @@ Modify or delete an item:
 Clone repository and go to it
 ```
 # Clone the repository using
-git clone TBD
+git clone https://github.com/YinanZhao/Shopify_Backend_Developer_Intern_Challenge_Summer_2022.git
 
 # Open and go to project path location using Terminal/Command line
 cd this-project/...
@@ -69,6 +69,12 @@ Run the server
 python manage.py runserver
 ```
 Local API calls can be made at: http://127.0.0.1:8000/
+
+## Testing
+To test different pages and their APIs
+```
+python manage.py test
+```
 
 ## Database migrations
 
