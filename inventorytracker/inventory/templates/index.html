@@ -1,0 +1,70 @@
+<!--Please note that a lot of code was taken off our template HTML code, which I modified to suit my needs. As the focus-->
+<!--of this project was on the backend, this was deemed acceptable. There's still integration of project stuff-->
+<!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_webpage&stacked=h-->
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Inventory Tracker!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-theme-l1">Inventory Tracker</a>
+  </div>
+</div>
+
+<!-- Main content: shift it to the right by 50 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:50px">
+  <div class="w3-row w3-padding-64">
+    <h1 class="w3-text-teal">Inventory Items</h1>
+      <h5 class="w3-text-green"> To modify or delete an item, click on its name.</h5>
+      <p>
+          <button onclick="location.href='/create'"class="w3-button w3-dark-grey">Create new item field</button>
+          <button onclick="location.href='/locations'"class="w3-button w3-dark-grey">Modify Locations</button>
+      </p>
+      {% if latest_items_list %}
+        <table class="w3-table w3-striped w3-white">
+            <tr>
+                <td><b>Name:</b></td>
+                <td><b>Description</b></td>
+                <td><b>Count (Number of items)</b></td>
+                <td><b>Location</b></td>
+            </tr>
+        {% for item in latest_items_list %}
+            <tr>
+                <td><a href="/{{ item.id }}/detail">{{ item.name }}</a></td>
+                <td><i>{{ item.description }}</i></td>
+                <td>{{ item.count }}</td>
+                <td>{{ item.location.city_name }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+      {% else %}
+
+        <p>There are currently no items! You can add some in Create new item field.</p>
+      {% endif %}
+  </div>
+</div>
+<!-- END MAIN -->
+
+</body>
+</html>
+
